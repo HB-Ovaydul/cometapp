@@ -23,3 +23,4 @@
 @if(Session::has('info'))
     <p class="alert alert-info">{{ Session::get('info') }} <button class="close" data-dismiss="alert">&times;</button> </p>
 @endif
+
