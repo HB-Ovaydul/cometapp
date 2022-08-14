@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('role_id')->default(2);
             $table->string('name');
             $table->string('email')->unique();
             $table->string('cell')->unique();
@@ -26,7 +27,7 @@ return new class extends Migration
             $table->text('photo')->default('avater.png');
             $table->string('adderss')->nullable();
             $table->string('access_token')->nullable();
-            $table->boolean('stutas')->default(true);
+            $table->boolean('status')->default(true);
             $table->boolean('trash')->default(false);
             $table->timestamps();
         });

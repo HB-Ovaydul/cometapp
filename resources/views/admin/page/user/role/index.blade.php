@@ -17,6 +17,7 @@
                                 <th>Slug</th>
                                 <th>Permissions</th>
                                 <th>Create_at</th>
+                                <th>Users</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -36,6 +37,15 @@
                                 </ul>   
                                 </td>
                                 <td>{{ $roles -> created_at -> diffForHumans()}}</td>
+                                <td>
+                                    <ul style="list-style: none; padding:0px">
+                                        @forelse (json_decode($roles -> users) as $role_user)
+                                            <li><i class="fa fa-check"></i> {{ $role_user -> name }}</li>
+                                        @empty
+                                        <li>No Record Found</li>
+                                        @endforelse
+                                    </ul>
+                                </td>
                                 <td>  
                                     <a class="btn btn-sm btn-warning" href="{{ route('role.edit', $roles ->id) }}"><i class="fa fa-edit"></i></a>
 
@@ -74,7 +84,7 @@
                     @csrf
                     
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label">Name</label>
+                        <label class="col-lg-3 col-form-label">Role Name</label>
                         <div class="col-lg-9">
                             <input name="name" type="text" class="form-control">
                         </div>

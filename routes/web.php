@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\RoleConroller;
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
 use App\Http\Controllers\admin\PermissionController;
@@ -23,5 +24,11 @@ Route::resource('/permission', PermissionController::class);
 
 // User Role Routes
 Route::resource('/role', RoleConroller::class);
+
+// Admin User Routes
+Route::resource('/admin-user', AdminController::class);
+
+// Admin Status Update Switch
+Route::get('/admin-status-update/{id}', [AdminController::class, 'UpdateStatus'])->name('admin.sta.up'); 
 });
 

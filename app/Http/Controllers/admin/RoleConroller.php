@@ -108,8 +108,8 @@ class RoleConroller extends Controller
         // Role Update
         $role_update = role::findOrFail($id);
         $role_update -> update([
-            'name' => $request->name,
-            'slug' => Str::slug( $request->name),
+            'name' => $request->role,
+            'slug' => Str::slug( $request->role),
             'permission' => json_encode($request->permission),
         ]);
 
