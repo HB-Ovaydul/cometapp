@@ -21,14 +21,15 @@ Route::get('/admin-logout',[AdminAuthController::class,'AdminLogout'])->name('ad
 
 // User permissions Routes
 Route::resource('/permission', PermissionController::class);
-
 // User Role Routes
 Route::resource('/role', RoleConroller::class);
-
 // Admin User Routes
 Route::resource('/admin-user', AdminController::class);
-
 // Admin Status Update Switch
 Route::get('/admin-status-update/{id}', [AdminController::class, 'UpdateStatus'])->name('admin.sta.up'); 
+// Trash Update
+Route::get('/admin-trash-update/{id}', [AdminController::class, 'TrashUpdate'])->name('admin.trash.update'); 
+// Trash page
+Route::get('/admin-trash', [AdminController::class, 'Trash'])->name('admin.trash'); 
 });
 

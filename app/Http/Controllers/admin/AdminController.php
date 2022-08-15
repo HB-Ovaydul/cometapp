@@ -17,7 +17,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-       $all_admin = admin::latest() -> get();
+       $all_admin = admin::latest() -> where('trash', false) -> get();
        $role = role::latest()->get();
         return view('admin.page.user.index',[
             'all_admin'     => $all_admin,
@@ -138,8 +138,41 @@ class AdminController extends Controller
         return back()->with('success-main', 'User Activated Successful!');
        }
 
-   
+    }
+    /**
+     * Trash Update
+     */
 
+    public function TrashUpdate($id)
+    {
+        // Get Status Id
+       $trash = admin::findOrFail($id);
+
+       // Check And Update
+       if($trash -> trash){
+           $trash -> update([
+               'trash' => false,
+           ]);
+           return back()->with('success-main', 'Restore User!');
+       }else{
+        $trash -> update([
+            'trash' => true,
+        ]);
+
+        return back()->with('danger-main', 'Move To Trash');
+       }
 
     }
+
+/**
+ * Recycle Bin & Trash
+ */
+public function Trash()
+{
+    $all_admin = admin::latest() -> where('trash', true) -> get();
+        return view('admin.page.user.trash',[
+            'all_admin'     => $all_admin,
+            'form_type'     => 'trash',
+    ]); 
+}
 }

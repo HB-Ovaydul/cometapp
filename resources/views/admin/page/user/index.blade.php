@@ -5,7 +5,8 @@
     <div class="col-lg-7">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">All Users</h4>
+                <h4 class="card-title d-inline justify-content-between">All Users</h4>
+                <a class="float-right text-danger" href="{{ route('admin.trash') }}">Trash <i class="fa fa-arrow-right"></i></a>
             </div>
             <div class="card-body">
                 @include('validate-main')
@@ -38,7 +39,6 @@
                                 <td>
                                     @if ($admin -> status)
                                         <span class="badge badge-success">Active User</span>
-                                        <span class="badge badge-success">Active User</span>
                                         <a class="text-danger" href="{{ route('admin.sta.up',$admin -> id,) }}"><i class="fa fa-times"></i></a>
                                     @else
                                         <span class="badge badge-danger">Blocked User</span>
@@ -48,12 +48,14 @@
                                 <td>  
                                     <a class="btn btn-sm btn-warning" href="{{ route('admin-user.index',$admin -> id) }}"><i class="fa fa-edit"></i></a>
 
-                                    <form  class="d-inline" action="{{ route('admin-user.destroy',$admin -> id ) }}" method="post">
+                                    {{-- <form  class="d-inline" action="{{ route('admin-user.destroy',$admin -> id ) }}" method="post">
                                     @csrf
                                     @method('DELETE')
 
                                        <button class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></button>
-                                    </form>
+                                    </form> --}}
+
+                                    <a class="btn btn-sm btn-danger" href="{{ route('admin.trash.update', $admin -> id ) }}"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endif
