@@ -6,10 +6,11 @@ use App\Models\admin\role;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Notifications\Notifiable;
 
 class admin extends User
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
     protected $guarded = [];
 
     /**

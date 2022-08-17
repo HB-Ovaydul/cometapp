@@ -46,7 +46,7 @@
                                     @endif
                                 </td>
                                 <td>  
-                                    <a class="btn btn-sm btn-warning" href="{{ route('admin-user.index',$admin -> id) }}"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-sm btn-warning" href="{{ route('admin-user.edit',$admin -> id) }}"><i class="fa fa-edit"></i></a>
 
                                     {{-- <form  class="d-inline" action="{{ route('admin-user.destroy',$admin -> id ) }}" method="post">
                                     @csrf
@@ -129,25 +129,58 @@
     @endif
     
     {{-- Edit Form --}}
-    {{-- @if ($form_type == 'edit')
+    @if ($form_type == 'edit')
     <div class="col-xl-4 d-flex">
         <div class="card flex-fill">
             <div class="card-header justify content between">
-                <h4 class="card-title">Edit Permission</h4>
+                <h4 class="card-title">Edit User</h4>
                 <a class="primary" href="{{ route('permission.index') }}">Back</a>
 
             </div>
            
             @include('validate')
             <div class="card-body">
-                <form action="{{ route('permission.update', $edit -> id) }}" method="POST">
+                <form action="{{ route('admin-user.update', $edit -> id) }}" method="POST">
                     @csrf
-                    @method('PATCH')
+                    @method('PUT')
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label">Name</label>
                         <div class="col-lg-9">
-                            <input name="name" type="text" value="{{ $edit -> name }}" class="form-control">
+                            <input name="name" value="{{ $edit -> name }}" type="text" class="form-control">
                         </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Email</label>
+                        <div class="col-lg-9">
+                            <input name="email" value="{{ $edit -> email }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Cell</label>
+                        <div class="col-lg-9">
+                            <input name="cell" value="{{ $edit -> cell }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Username</label>
+                        <div class="col-lg-9">
+                            <input name="username" value="{{ $edit -> username }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label class="col-lg-3 col-form-label">Role</label>
+                        <div class="col-lg-9">
+                            <select name="role" id="" class="form-control">
+                                <option  value="@if (json_decode($edit -> id)) selected @endif">{{ $edit -> role }}</option>
+                                @foreach ($role as $item)
+                                <option value="{{ $item -> id }}">{{ $item -> name }}</option> 
+                                @endforeach
+                            </select>
+
+
+                        </div>
+                       
                     </div>
                     <div class="text-right">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -157,6 +190,6 @@
         </div>
     </div>
     @endif
-   --}}
+  
 </div>
 @endsection

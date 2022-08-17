@@ -28,7 +28,8 @@ Route::resource('/admin-user', AdminController::class);
 // Admin Status Update Switch
 Route::get('/admin-status-update/{id}', [AdminController::class, 'UpdateStatus'])->name('admin.sta.up'); 
 // Trash Update
-Route::get('/admin-trash-update/{id}', [AdminController::class, 'TrashUpdate'])->name('admin.trash.update'); 
+Route::get('/admin-trash-update/{id}', [AdminController::class, 'TrashUpdate'])->name('admin.trash.update');
+ 
 // Trash page
 Route::get('/admin-trash', [AdminController::class, 'Trash'])->name('admin.trash'); 
 });

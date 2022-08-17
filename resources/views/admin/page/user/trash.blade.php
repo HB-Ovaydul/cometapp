@@ -19,7 +19,7 @@
                                 <th>Photo</th>
                                 <th>Create_at</th>
                                 <th>Restore</th>
-                                <th>Action</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,17 +37,14 @@
                                 <td>{{ $admin -> created_at -> diffForHumans()}}</td>
                                 <td>
                                     @if ($admin -> trash)
-                                        <a class="text-danger" href="{{ route('admin.trash.update',$admin -> id,) }}"><span class="badge badge-danger">Restore User</span></a>
+                                        <a class="" href="{{ route('admin.trash.update',$admin -> id,) }}"><span class="badge badge-info">Restore User</span></a>
                                     @endif
                                 </td>
-                                <td>  
-                                    <a class="btn btn-sm btn-warning" href="{{ route('admin-user.index',$admin -> id) }}"><i class="fa fa-edit"></i></a>
-
+                                <td>
                                     <form  class="d-inline" action="{{ route('admin-user.destroy',$admin -> id ) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-
-                                       <button class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></button>
+                                        @csrf
+                                        @method('DELETE')
+                                           <button class="delete btn border-none p-0"><span class="badge badge-danger">Permanently Delete</span></button>
                                     </form>
                                 </td>
                             </tr>

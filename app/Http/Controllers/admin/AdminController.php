@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\admin;
 use App\Models\admin\role;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Notifications\UserAccountNotification;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -57,7 +58,7 @@ class AdminController extends Controller
       $pass = substr($pass_string, 10,10);
 
         // Admin Data Store
-        admin::create([
+      $user = admin::create([
             'name'          => $request -> name,
             'role_id'       => $request -> role,
             'username'      => $request -> username,
@@ -65,6 +66,8 @@ class AdminController extends Controller
             'cell'          => $request -> cell,
             'password'      => Hash::make($pass)
         ]);
+
+        $user -> notify( new UserAccountNotification([ $user['name'], $pass ]) );
 
         return back()->with('success', 'Accout Create Successful!');
 
@@ -90,7 +93,15 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $all_admin = admin::latest() -> where('trash', false) -> get();
+        $role = role::latest()->get();
+        $edit_user = admin::findOrFail($id);
+         return view('admin.page.user.index',[
+             'all_admin'     => $all_admin,
+             'form_type'     => 'edit',
+             'role'          => $role,
+             'edit'          => $edit_user,
+     ]); 
     }
 
     /**
@@ -113,7 +124,12 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Find id
+      $delet_user = admin::findOrFail($id);
+      $delet_user -> delete();
+
+      // Retrun back
+      return back()->with('success-main', 'User Deleted Successful!');
     }
 
     /**
