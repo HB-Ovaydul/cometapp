@@ -11,7 +11,7 @@
             <div class="card-body">
                 @include('validate-main')
                 <div class="table-responsive">
-                    <table class="table mb-0">
+                    <table class="table mb-0 data-table-ov">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -129,7 +129,7 @@
     @endif
     
     {{-- Edit Form --}}
-    @if ($form_type == 'edit')
+    {{-- @if ($form_type == 'edit')
     <div class="col-xl-4 d-flex">
         <div class="card flex-fill">
             <div class="card-header justify content between">
@@ -189,7 +189,7 @@
             </div>  
         </div>
     </div>
-    @endif
+    @endif --}}
   
 </div>
 @endsection

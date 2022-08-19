@@ -53,10 +53,9 @@ class RoleConroller extends Controller
         role::create([
             'name' => $request->name,
             'slug' => Str::slug( $request->name),
-            'permission' => json_encode($request->permission),
-            
+            'permission' => json_encode($request->permission),           
         ]);
-
+        
         // Retrun back
         return back()->with('success', 'Role Added Successful!');
     }
@@ -108,8 +107,8 @@ class RoleConroller extends Controller
         // Role Update
         $role_update = role::findOrFail($id);
         $role_update -> update([
-            'name' => $request->role,
-            'slug' => Str::slug( $request->role),
+            'name' => $request->name,
+            'slug' => Str::slug( $request->name),
             'permission' => json_encode($request->permission),
         ]);
 

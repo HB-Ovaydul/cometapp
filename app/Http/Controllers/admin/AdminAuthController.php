@@ -30,7 +30,14 @@ class AdminAuthController extends Controller
        // Admin Login Process
        if(Auth::guard('admin')->attempt(['email' => $request -> auth, 'password' => $request -> password ]) || Auth::guard('admin')->attempt(['cell' => $request -> auth, 'password' => $request -> password ]) || Auth::guard('admin')->attempt(['username' => $request -> auth, 'password' => $request -> password ])){
 
-         return redirect()->route('show.deshboard');
+        // Check Diseble Account
+        if(Auth::guard('admin')->user()->status && Auth::guard('admin')->user()->trash == false){
+          return redirect()->route('show.deshboard');
+        }else{
+          Auth::guard('admin')->logout();
+          return redirect()->route('admin.login.page')->with('warning', 'Sorry! Your Are Blocked');
+        }
+
        }else{
          return back()->with('danger', 'Login Failed!');
        }

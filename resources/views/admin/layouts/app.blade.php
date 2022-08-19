@@ -21,6 +21,8 @@
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('admin/assets//css/style.css') }}">
+		<!-- DataTable plugin -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css"/>
 		
     </head>
     <body>
@@ -76,6 +78,8 @@
 		<script src="{{ asset('admin/assets//plugins/raphael/raphael.min.js') }}"></script>    
 		<script src="{{ asset('admin/assets//plugins/morris/morris.min.js') }}"></script>  
 		<script src="{{ asset('admin/assets//js/chart.morris.js') }}"></script>
+		<!-- DataTable plugin -->
+		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
 		
 		<!-- Custom JS -->
 		<script  src="{{ asset('admin/assets//js/script.js') }}"></script>

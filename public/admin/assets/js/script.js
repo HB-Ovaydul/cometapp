@@ -234,7 +234,7 @@ Version      : 1.0
 			return false;
 		}
 	});
-
+// Alert
     $('.delete').click(function(){
         let conf = confirm('Are you Sure?')
 		if(conf){
@@ -244,5 +244,10 @@ Version      : 1.0
 		}
     });
 
+// Datatable
+
+$(document).ready(function(){
+	$('.data-table-ov').DataTable();
+});
 	
 })(jQuery);

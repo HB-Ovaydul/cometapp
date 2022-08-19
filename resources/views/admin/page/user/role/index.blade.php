@@ -9,7 +9,7 @@
             <div class="card-body">
                 @include('validate-main')
                 <div class="table-responsive">
-                    <table class="table mb-0">
+                    <table class="table mb-0 data-table-ov">
                         <thead>
                             <tr>
                                 <th>#</th>
@@ -120,7 +120,7 @@
         <div class="card flex-fill">
             <div class="card-header justify content between">
                 <h4 class="card-title">Edit Permission</h4>
-                <a class="primary" href="{{ route('permission.index') }}">Back</a>
+                <a class="primary" href="{{ route('role.index') }}">Back</a>
 
             </div>
            
