@@ -29,7 +29,14 @@
                             <tr>
                                 <td>{{ $loop -> index + 1}}</td>
                                 <td>{{ $admin -> name }}</td>
-                                <td>{{ $admin -> role -> name }}</td>
+                                <td>
+                             @if (isset($admin -> role -> name))
+
+                                  {{ $admin -> role -> name }}
+                            @else
+                            No Roles Founds
+                             @endif
+                            </td>
                                 <td>
                                     @if ($admin -> photo == 'avater.png')
                                         <img style="width: 50px; height: 50px; object-fit: cover;" src="{{ url('storage/admin_photo/avater.jpg') }}" alt="">

@@ -6,8 +6,9 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
 use App\Http\Controllers\admin\PermissionController;
+use App\Http\Controllers\Frontend\FrontednController;
 
-// Admin Auth Routes
+// Backend Admin Auth Routes
 Route::group(['middleware' => 'admin.redirect'], function(){
 Route::get('/admin-login',[AdminAuthController::class,'ShowAdminLoginPage'])->name('admin.login.page');
 Route::post('/admin-login',[AdminAuthController::class,'AdminLogin'])->name('admin.login');
@@ -33,4 +34,10 @@ Route::get('/admin-trash-update/{id}', [AdminController::class, 'TrashUpdate'])-
 // Trash page
 Route::get('/admin-trash', [AdminController::class, 'Trash'])->name('admin.trash'); 
 });
+
+/**
+ * Forntend Pages Routs
+ */
+
+ Route::get('/', [FrontednController::class, 'ShowHomePage'])->name('home.page');
 
