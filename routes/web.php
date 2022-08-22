@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\RoleConroller;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
 use App\Http\Controllers\admin\PermissionController;
@@ -40,4 +41,5 @@ Route::get('/admin-trash', [AdminController::class, 'Trash'])->name('admin.trash
  */
 
  Route::get('/', [FrontednController::class, 'ShowHomePage'])->name('home.page');
+ Route::resource('/slide',SliderController::class);
 

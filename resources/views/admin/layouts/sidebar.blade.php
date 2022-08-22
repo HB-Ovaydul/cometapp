@@ -11,7 +11,7 @@
 							</li>
 							@if(in_array('Slider', json_decode(Auth::guard('admin')->user()->role->permission)))
 							<li> 
-								<a href="index.html"><i class="fa fa-sliders"></i> <span>Slider</span></a>
+								<a href="{{ route('slide.index') }}"><i class="fa fa-sliders"></i> <span>Slider</span></a>
 							</li>
 							@endif
 							@if (in_array('Testimonials', json_decode(Auth::guard('admin')->user()->role->permission)))

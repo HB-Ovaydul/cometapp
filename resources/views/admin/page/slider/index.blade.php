@@ -1,0 +1,141 @@
+@extends('admin.layouts.app')
+
+@section('main-content')
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title d-inline justify-content-between">All Sliders</h4>
+                <a class="float-right text-danger" href="{{ route('admin.trash') }}">Trash <i class="fa fa-arrow-right"></i></a>
+            </div>
+            <div class="card-body">
+                @include('validate-main')
+                <div class="table-responsive">
+                    <table class="table mb-0 data-table-ov">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Subtitle</th>
+                                <th>Photo</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if ($form_type == 'create')
+    <div class="col-xl-5 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h4 class="card-title">Add Slider</h4>
+            </div>
+
+            @include('validate')
+            <div class="card-body">
+                <form action="{{ route('slide.store') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="">Title</label>
+                        <input name="title" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Subtitle</label>
+                        <input name="subtitle" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="mb-1">Photo</label>
+                        <input style="display:none;" name="photo" type="file" class="form-control" id="slider-photo">
+                        <br>
+                        <img style="max-width:100%; max-height:100%;" id="slide-photo-preview" src="" alt="">
+                        <label for="slider-photo">
+                           <img style="width:90px; height:90px;" src="admin/assets/img/slide1.png" alt="">
+                        </label>
+                    </div>
+                    <div class="form-group btn-slide-option">
+                        <hr>
+
+                        <a id="add-slide-preview-option" class="btn btn-sm btn-info" href="#">Add New Button</a>
+                    </div>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div>
+    @endif
+    
+    {{-- Edit Form --}}
+    {{-- @if ($form_type == 'edit')
+    <div class="col-xl-4 d-flex">
+        <div class="card flex-fill">
+            <div class="card-header justify content between">
+                <h4 class="card-title">Edit User</h4>
+                <a class="primary" href="{{ route('permission.index') }}">Back</a>
+
+            </div>
+           
+            @include('validate')
+            <div class="card-body">
+                <form action="{{ route('admin-user.update', $edit -> id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Name</label>
+                        <div class="col-lg-9">
+                            <input name="name" value="{{ $edit -> name }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Email</label>
+                        <div class="col-lg-9">
+                            <input name="email" value="{{ $edit -> email }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Cell</label>
+                        <div class="col-lg-9">
+                            <input name="cell" value="{{ $edit -> cell }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label">Username</label>
+                        <div class="col-lg-9">
+                            <input name="username" value="{{ $edit -> username }}" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label class="col-lg-3 col-form-label">Role</label>
+                        <div class="col-lg-9">
+                            <select name="role" id="" class="form-control">
+                                <option  value="@if (json_decode($edit -> id)) selected @endif">{{ $edit -> role }}</option>
+                                @foreach ($role as $item)
+                                <option value="{{ $item -> id }}">{{ $item -> name }}</option> 
+                                @endforeach
+                            </select>
+
+
+                        </div>
+                       
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>  
+        </div>
+    </div>
+    @endif --}}
+  
+</div>
+@endsection

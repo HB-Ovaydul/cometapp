@@ -234,6 +234,8 @@ Version      : 1.0
 			return false;
 		}
 	});
+
+// My javascript
 // Alert
     $('.delete').click(function(){
         let conf = confirm('Are you Sure?')
@@ -245,9 +247,29 @@ Version      : 1.0
     });
 
 // Datatable
-
 $(document).ready(function(){
 	$('.data-table-ov').DataTable();
+});
+
+// Slider Photo management 
+$('#slider-photo').change(function(e){
+	const photo_url = URL.createObjectURL(e.target.files[0]);
+	$('#slide-photo-preview').attr('src', photo_url);
+});
+
+// Button Management
+
+$('#add-slide-preview-option').click(function(e){
+	e.preventDefault();
+	$('.btn-slide-option').append(`
+			<div class="btn-slider-area">
+			<span>Button#1<span>
+			<input class="form-control" type="text" id="" placeholder="Button Title">
+			<input class="form-control" type="text" id="" placeholder="Button link">
+    		</div>
+	`);
+
+	// alert();
 });
 	
 })(jQuery);
