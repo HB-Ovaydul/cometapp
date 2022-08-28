@@ -29,11 +29,15 @@ Route::resource('/role', RoleConroller::class);
 Route::resource('/admin-user', AdminController::class);
 // Admin Status Update Switch
 Route::get('/admin-status-update/{id}', [AdminController::class, 'UpdateStatus'])->name('admin.sta.up'); 
-// Trash Update
-Route::get('/admin-trash-update/{id}', [AdminController::class, 'TrashUpdate'])->name('admin.trash.update');
- 
-// Trash page
+// Admin Users Trash page
 Route::get('/admin-trash', [AdminController::class, 'Trash'])->name('admin.trash'); 
+Route::get('/admin-trash-update/{id}', [AdminController::class, 'TrashUpdate'])->name('admin.trash.update');
+// Slider Routes
+Route::resource('/slide',SliderController::class);
+Route::get('/trash-slide', [SliderController::class, 'ShowSlideTrash'])->name('slide.tash');
+Route::get('/trash-slide/{id}', [SliderController::class, 'TrashForSlide'])->name('slide.move.tash');
+Route::get('/status-update-slide/{id}', [SliderController::class, 'statusForSlide'])->name('slide.status');
+
 });
 
 /**
@@ -41,5 +45,4 @@ Route::get('/admin-trash', [AdminController::class, 'Trash'])->name('admin.trash
  */
 
  Route::get('/', [FrontednController::class, 'ShowHomePage'])->name('home.page');
- Route::resource('/slide',SliderController::class);
 

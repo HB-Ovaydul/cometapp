@@ -257,19 +257,44 @@ $('#slider-photo').change(function(e){
 	$('#slide-photo-preview').attr('src', photo_url);
 });
 
-// Button Management
+// Slider Photo management 
+$('#new-photo').change(function(e){
+	// const photo_url = URL.createObjectURL(e.target.files[0]);
+	// $('#slide-photo-preview').attr('src', photo_url);
 
+	alert();
+});
+
+// Button Management
+let btn_no = 1;
 $('#add-slide-preview-option').click(function(e){
 	e.preventDefault();
 	$('.btn-slide-option').append(`
 			<div class="btn-slider-area">
-			<span>Button#1<span>
-			<input class="form-control" type="text" id="" placeholder="Button Title">
-			<input class="form-control" type="text" id="" placeholder="Button link">
+			<span>Button#${btn_no}<span>
+			<span style="margin-left:390px;cursor:pointer;" class="badge badge-danger button-romove">Remove</span>
+			<input name="btn_title[]" class="form-control" type="text" id="" placeholder="Button Title">
+			<input name="btn_link[]" class="form-control" type="text" id="" placeholder="Button link">
+			<label>
+				<select class="form-control select" name="btn_type[]">
+					<option value="btn btn-color">Default</option>
+					<option value="btn btn-light-out">Red</option>
+				</select>
+			</label>
     		</div>
 	`);
-
-	// alert();
+	btn_no++;
 });
+
+//Button Remove
+$(document).on('click', '.button-romove',function(){
+	
+	$(this).closest('.btn-slider-area').remove();
+});
+
+
+
+
+
 	
 })(jQuery);
