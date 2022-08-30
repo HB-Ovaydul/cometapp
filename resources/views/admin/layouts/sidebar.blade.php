@@ -16,7 +16,7 @@
 							@endif
 							@if (in_array('Testimonials', json_decode(Auth::guard('admin')->user()->role->permission)))
 							<li> 
-								<a href="index.html"><i class="fe fa-quote-right"></i> <span>Testimonials</span></a>
+								<a href="{{ route('testimonial.index') }}"><i class="fe fa-quote-right"></i> <span>Testimonials</span></a>
 							</li>
 							@endif
 							@if (in_array('Our Clint', json_decode(Auth::guard('admin')->user()->role->permission)))

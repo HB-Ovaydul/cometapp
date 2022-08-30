@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\Frontend\FrontednController;
+use App\Http\Controllers\admin\TestimonialsController;
 
 // Backend Admin Auth Routes
 Route::group(['middleware' => 'admin.redirect'], function(){
@@ -37,6 +38,11 @@ Route::resource('/slide',SliderController::class);
 Route::get('/trash-slide', [SliderController::class, 'ShowSlideTrash'])->name('slide.tash');
 Route::get('/trash-slide/{id}', [SliderController::class, 'TrashForSlide'])->name('slide.move.tash');
 Route::get('/status-update-slide/{id}', [SliderController::class, 'statusForSlide'])->name('slide.status');
+//Testimonials Routes
+Route::resource('/testimonial', TestimonialsController::class);
+Route::get('testimonial-trash-page', [TestimonialsController::class, 'TestimonialTrash'])->name('test.trash');
+Route::get('testimonial-trash-update/{id}', [TestimonialsController::class, 'TestimonialTrashUpdate'])->name('test.trash.update');
+Route::get('testimonial-status-update/{id}', [TestimonialsController::class, 'StatushUpdate'])->name('test.status.update');
 
 });
 
