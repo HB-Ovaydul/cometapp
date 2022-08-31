@@ -21,7 +21,7 @@
 							@endif
 							@if (in_array('Our Clint', json_decode(Auth::guard('admin')->user()->role->permission)))
 							<li> 
-								<a href="index.html"><i class="fe fe-user"></i> <span>Our Clints</span></a>
+								<a href="{{ route('client.index') }}"><i class="fe fe-user"></i> <span>Our Clints</span></a>
 							</li>
 							@endif
 							@if (in_array('Portfolio', json_decode(Auth::guard('admin')->user()->role->permission)))

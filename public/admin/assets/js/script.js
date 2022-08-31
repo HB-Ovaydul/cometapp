@@ -259,10 +259,9 @@ $('#slider-photo').change(function(e){
 
 // Slider Photo management 
 $('#new-photo').change(function(e){
-	// const photo_url = URL.createObjectURL(e.target.files[0]);
-	// $('#slide-photo-preview').attr('src', photo_url);
+	const photo_url = URL.createObjectURL(e.target.files[0]);
+	$('#slide-photo-preview').attr('src', photo_url);
 
-	alert();
 });
 
 // Button Management

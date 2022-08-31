@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\RoleConroller;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
@@ -44,6 +45,11 @@ Route::get('testimonial-trash-page', [TestimonialsController::class, 'Testimonia
 Route::get('testimonial-trash-update/{id}', [TestimonialsController::class, 'TestimonialTrashUpdate'])->name('test.trash.update');
 Route::get('testimonial-status-update/{id}', [TestimonialsController::class, 'StatushUpdate'])->name('test.status.update');
 
+// Client Routes
+Route::resource('/client', ClientController::class);
+Route::get('/client-trash-page', [ClientController::class, 'ClientTrashPage'])->name('client.trash.page');
+Route::get('/client-trash-update/{id}', [ClientController::class, 'ClientTrasUdate'])->name('client.trash.update');
+Route::get('/client-status-update/{id}', [ClientController::class, 'ClientStatusUdate'])->name('client.status.update');
 });
 
 /**
