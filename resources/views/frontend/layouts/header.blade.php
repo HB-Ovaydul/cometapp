@@ -3,8 +3,8 @@
       <!-- Logo container-->
       <div class="logo">
         <a href="{{ route('home.page') }}">
-          <img src="images/logo_light.png" alt="" class="logo-light">
-          <img src="images/logo_dark.png" alt="" class="logo-dark">
+          <img src="frontend/images/logo_light.png" alt="" class="logo-light">
+          <img src="frontend/images/logo_dark.png" alt="" class="logo-dark">
         </a>
       </div>
       <!-- End Logo container-->

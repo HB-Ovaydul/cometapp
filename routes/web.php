@@ -75,5 +75,4 @@ Route::get('contact-status-update/{id}',[ContactUsController::class,'ContactStat
 
  Route::get('/', [FrontednController::class, 'ShowHomePage'])->name('home.page');
  Route::get('/contact', [FrontednController::class, 'ShowCntactPage'])->name('contact.page');
- Route::get('/exper', [FrontednController::class, 'ShowCntactPage'])->name('contact.page');
 
