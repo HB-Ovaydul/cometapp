@@ -4152,3 +4152,46 @@ My Css
 .btn-slider-area input{
 	margin-bottom: 10px;
 }
+
+.mod-font-select-icon .preview-icon{
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.preview-icon {
+    padding: 15px 10px;
+    border: 1px solid #e7e7e7;
+    margin-left: -15px;
+    margin-right: -16px;
+    margin-bottom: -1px;
+}
+.preview-icon i {
+    font-size: 25px;
+    color: #494e53;
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.preview-icon code {
+    font-size: 12px;
+    background-color: transparent;
+    color: #191b1d;
+}
+
+element.style {
+}
+.title.center hr {
+    margin: 30px auto;
+}
+.title hr {
+    width: 45px;
+    margin: 20px 0;
+    border-top: 1px solid #EF2D56;
+}
+
+.title .center hr {
+    margin: 30px auto;
+}
+

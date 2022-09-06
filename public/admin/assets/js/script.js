@@ -291,9 +291,26 @@ $(document).on('click', '.button-romove',function(){
 	$(this).closest('.btn-slider-area').remove();
 });
 
+// Modeal icon
 
+$('button.btn-select-modal').click(function(e){
+	e.preventDefault();
+	$('#select-icon').modal('show');
+});
 
+$('.mod-font-select-icon .preview-icon code').click(function(){
+	
+	let icon = $(this).html();
+	let icons =$('.ov-icon-select').val(icon);
+	$('#select-icon').modal('hide');
+});
 
+// Espertise Pohoto preview
+
+$('#photo-id').change(function(e){
+	let url = URL.createObjectURL(e.target.files[0]);
+	$('#photo-preview').attr('src', url);
+});
 
 	
 })(jQuery);

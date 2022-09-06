@@ -14,6 +14,16 @@
 								<a href="{{ route('slide.index') }}"><i class="fa fa-sliders"></i> <span>Slider</span></a>
 							</li>
 							@endif
+							@if(in_array('Expertise', json_decode(Auth::guard('admin')->user()->role->permission)))
+							<li> 
+								<a href="{{ route('expertise.index') }}"><i class="fa fa-sliders"></i> <span>Expertise</span></a>
+							</li>
+							@endif
+							@if(in_array('Contact', json_decode(Auth::guard('admin')->user()->role->permission)))
+							<li> 
+								<a href="{{ route('contact-admin.index') }}"><i class="fa fa-address-book"></i> <span>Contact</span></a>
+							</li>
+							@endif
 							@if (in_array('Testimonials', json_decode(Auth::guard('admin')->user()->role->permission)))
 							<li> 
 								<a href="{{ route('testimonial.index') }}"><i class="fe fa-quote-right"></i> <span>Testimonials</span></a>

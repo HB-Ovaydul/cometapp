@@ -7,6 +7,8 @@ use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
+use App\Http\Controllers\admin\ContactUsController;
+use App\Http\Controllers\admin\ExpertiseController;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\Frontend\FrontednController;
 use App\Http\Controllers\admin\TestimonialsController;
@@ -50,11 +52,28 @@ Route::resource('/client', ClientController::class);
 Route::get('/client-trash-page', [ClientController::class, 'ClientTrashPage'])->name('client.trash.page');
 Route::get('/client-trash-update/{id}', [ClientController::class, 'ClientTrasUdate'])->name('client.trash.update');
 Route::get('/client-status-update/{id}', [ClientController::class, 'ClientStatusUdate'])->name('client.status.update');
+
+// Expertise Routes
+Route::resource('/expertise', ExpertiseController::class);
+Route::get('/expertise-trash-page',[ExpertiseController::class,'ExMoveTrash'])->name('ex.move.trash');
+Route::get('/expertise-trash-update/{id}',[ExpertiseController::class,'ExUpdateTrash'])->name('ex.Update.trash');
+Route::get('/expertise-status-update/{id}',[ExpertiseController::class,'ExStatusUpdate'])->name('ex.status.update');
+
+// Contact Us Routes
+Route::resource('/contact-admin', ContactUsController::class);
+Route::get('contact-trash-page',[ContactUsController::class,'ContactTrashPage'])->name('con.trash.page');
+Route::get('contact-trash-update/{id}',[ContactUsController::class,'ContactTrashupdate'])->name('con.trash.update');
+Route::get('contact-status-update/{id}',[ContactUsController::class,'ContactStatusUpdate'])->name('con.status.update');
+
 });
+
+
 
 /**
  * Forntend Pages Routs
  */
 
  Route::get('/', [FrontednController::class, 'ShowHomePage'])->name('home.page');
+ Route::get('/contact', [FrontednController::class, 'ShowCntactPage'])->name('contact.page');
+ Route::get('/exper', [FrontednController::class, 'ShowCntactPage'])->name('contact.page');
 
