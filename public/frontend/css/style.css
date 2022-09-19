@@ -4885,3 +4885,7 @@ footer.dark p {
     transform: scale(1);
   }
 }
+
+.menu-hover a:hover{
+  color: #EF2D56;
+}

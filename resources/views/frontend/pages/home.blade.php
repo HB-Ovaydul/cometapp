@@ -49,7 +49,7 @@
   <!-- End Home Section-->
   @include('frontend.sections.title')
   @include('frontend.sections.expertise')
-  @include('frontend.sections.vition')
+  @include('frontend.sections.vision')
   @include('frontend.sections.portfolio')
   @include('frontend.sections.clints')
   @include('frontend.sections.testimonials')

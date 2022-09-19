@@ -24,6 +24,21 @@
 								<a href="{{ route('contact-admin.index') }}"><i class="fa fa-address-book"></i> <span>Contact</span></a>
 							</li>
 							@endif
+							@if(in_array('Vision', json_decode(Auth::guard('admin')->user()->role->permission)))
+							<li> 
+								<a href="{{ route('vision.index') }}"><i class="fa fa-address-book"></i> <span>The Vision</span></a>
+							</li>
+							@endif
+							@if(in_array('About Page', json_decode(Auth::guard('admin')->user()->role->permission)))
+                            <li class="submenu">
+								<a href="#"><i class="fa fa-comment-o"></i> <span>About Page</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{{ route('about-banner.index') }}">Banner</a></li>
+                                    {{-- <li><a href="#">Category</a></li>
+                                    <li><a href="invoice-report.html">Tags</a></li> --}}
+								</ul>
+							</li>
+						@endif
 							@if (in_array('Testimonials', json_decode(Auth::guard('admin')->user()->role->permission)))
 							<li> 
 								<a href="{{ route('testimonial.index') }}"><i class="fe fa-quote-right"></i> <span>Testimonials</span></a>
@@ -38,9 +53,9 @@
                             <li class="submenu">
 								<a href="#"><i class="fa fa-briefcase"></i> <span> Portfolio</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="invoice-report.html">Portfolio</a></li>
-                                    <li><a href="invoice-report.html">Category</a></li>
-                                    <li><a href="invoice-report.html">Tags</a></li>
+									<li><a href="{{ route('portfolio.index') }}">Portfolio</a></li>
+                                    <li><a href="{{ route('portfolio-category.index') }}">Category</a></li>
+                                    {{-- <li><a href="invoice-report.html">Tags</a></li> --}}
 								</ul>
 							</li>
 							@endif
@@ -55,7 +70,7 @@
 								<a href="#"><i class="fa fa-comment-o"></i> <span> Post</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="invoice-report.html">All Post</a></li>
-                                    <li><a href="invoice-report.html">Category</a></li>
+                                    <li><a href="#">Category</a></li>
                                     <li><a href="invoice-report.html">Tags</a></li>
 								</ul>
 							</li>

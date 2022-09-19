@@ -145,9 +145,7 @@
                           <img style="max-width:100%; max-height:100%;" id="photo-preview" src="{{ url('storage/expertise/'. $edit_id -> ex_photo) }}" alt="">
                           <label for="photo-id">
                             <img style="width:90px; height:90px;" src="{{ url('admin/assets/img/slide1.png') }}" alt="">
-                          </label>
-                          
-                          
+                          </label>     
                       </div>
 
                   <div class="text-right">

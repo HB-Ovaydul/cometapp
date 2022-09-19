@@ -312,5 +312,24 @@ $('#photo-id').change(function(e){
 	$('#photo-preview').attr('src', url);
 });
 
-	
+// The Vision photo view
+$('#photo_id').change(function(e){
+	let urls = URL.createObjectURL(e.target.files[0]);
+	$('#photo_viwe').attr('src', urls);
+});
+
+// CKeditor
+CKEDITOR.replace( 'portfolio_desc' );
+
+// Multiple Gallery image
+$('#gallery').change(function(e){
+	const files = e.target.files;
+	let galler_file = '';
+	for(let i = 0; i < files.length; i++){
+		const object_file = URL.createObjectURL(files[i]);
+		galler_file += `<img src="${ object_file }">`;	
+	}
+	$('.preview-gallery').html(galler_file);
+});
+
 })(jQuery);

@@ -28,6 +28,8 @@
 		<link rel="stylesheet" href="{{ asset('admin/assets/icon/themify-icons.css') }}">
 		{{-- Et-line-icon --}}
 		<link rel="stylesheet" href="{{ asset('admin/assets/icon/et-line-icon/style.css') }}">
+
+	
 		
     </head>
     <body>
@@ -87,6 +89,7 @@
 		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
 		
 		<!-- Custom JS -->
+		<script  src="{{ asset('admin/assets/ckeditor/ckeditor.js') }}"></script>
 		<script  src="{{ asset('admin/assets/js/script.js') }}"></script>
 		
     </body>

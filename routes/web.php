@@ -5,13 +5,17 @@ use App\Http\Controllers\admin\RoleConroller;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\SliderController;
+use App\Http\Controllers\admin\VisionContriller;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
 use App\Http\Controllers\admin\ContactUsController;
 use App\Http\Controllers\admin\ExpertiseController;
+use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PermissionController;
+use App\Http\Controllers\admin\AboutBannerController;
 use App\Http\Controllers\Frontend\FrontednController;
 use App\Http\Controllers\admin\TestimonialsController;
+use App\Http\Controllers\admin\PortfolioCatagoryController;
 
 // Backend Admin Auth Routes
 Route::group(['middleware' => 'admin.redirect'], function(){
@@ -61,13 +65,35 @@ Route::get('/expertise-status-update/{id}',[ExpertiseController::class,'ExStatus
 
 // Contact Us Routes
 Route::resource('/contact-admin', ContactUsController::class);
-Route::get('contact-trash-page',[ContactUsController::class,'ContactTrashPage'])->name('con.trash.page');
-Route::get('contact-trash-update/{id}',[ContactUsController::class,'ContactTrashupdate'])->name('con.trash.update');
-Route::get('contact-status-update/{id}',[ContactUsController::class,'ContactStatusUpdate'])->name('con.status.update');
+Route::get('/contact-trash-page',[ContactUsController::class,'ContactTrashPage'])->name('con.trash.page');
+Route::get('/contact-trash-update/{id}',[ContactUsController::class,'ContactTrashupdate'])->name('con.trash.update');
+Route::get('/contact-status-update/{id}',[ContactUsController::class,'ContactStatusUpdate'])->name('con.status.update');
+
+// PortFolio Routs
+Route::resource('/portfolio', PortfolioController::class);
+Route::get('/portfolio-trash-page',[PortfolioController::class,'PortfolioTrashPage'])->name('Port.trash.page');
+Route::get('/portfolio-trash-update/{id}',[PortfolioController::class,'PortfolioTrashUpdate'])->name('Port.trash.update');
+Route::get('/portfolio-status-update/{id}',[PortfolioController::class,'PortfolioStatusUpdate'])->name('Port.status.update');
+
+// Portfolio Category Routes
+Route::resource('/portfolio-category',PortfolioCatagoryController::class);
+Route::get('/portfolio-category-trash-page',[PortfolioCatagoryController::class,'PortfolioCategoryTrashPage'])->name('Pc.trash.page');
+Route::get('/portfolio-category-trash-update/{id}',[PortfolioCatagoryController::class,'PortfolioCategoryTrashUpdate'])->name('Pc.trash.update');
+Route::get('/portfolio-category-status-update/{id}',[PortfolioCatagoryController::class,'PortfolioCategoryStatusUpdate'])->name('Pc.status.update');
+
+// The Vision
+Route::resource('/vision',VisionContriller::class);
+Route::get('/vision-trash-page',[VisionContriller::class,'VisionTrashPage'])->name('vision.trash.page');
+Route::get('/vision-trash-update/{id}',[VisionContriller::class,'VisionTrashupdate'])->name('vision.trash.update');
+Route::get('/vision-status-update/{id}',[VisionContriller::class,'VisionStatusupdate'])->name('vision.status.update');
+
+// About Admin Routes
+Route::resource('/about-banner',AboutBannerController::class);
+Route::get('/banner-status/{id}',[AboutBannerController::class, 'BannerStatus' ])->name('banner.status.update');
+Route::get('/banner-trash-page',[AboutBannerController::class, 'BannerTrashPage' ])->name('banner.trash');
+Route::get('/banner-trash-update/{id}',[AboutBannerController::class, 'BannerTrashUpdate' ])->name('banner.trash.update');
 
 });
-
-
 
 /**
  * Forntend Pages Routs
@@ -75,4 +101,6 @@ Route::get('contact-status-update/{id}',[ContactUsController::class,'ContactStat
 
  Route::get('/', [FrontednController::class, 'ShowHomePage'])->name('home.page');
  Route::get('/contact', [FrontednController::class, 'ShowCntactPage'])->name('contact.page');
+ Route::get('/about', [FrontednController::class, 'ShowAboutPage'])->name('about.page');
+ Route::get('/portfolio-single-page/{slug}', [FrontednController::class, 'ShowSinglePortfolioPage'])->name('port.single.page');
 
