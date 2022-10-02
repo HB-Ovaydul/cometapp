@@ -30,7 +30,9 @@
                                 <td>
                                 <ul style="list-style: none; padding:0px">
                                     @forelse (json_decode($roles -> permission) as $role)
-                                            <li><i class="fa fa-angle-right"></i> {{ $role }}</li>
+                                            <li><i class="fa fa-angle-right"></i>
+                                                {{ $role }}
+                                            </li>
                                     @empty
                                         <li>Permission Empty!</li>       
                                     @endforelse

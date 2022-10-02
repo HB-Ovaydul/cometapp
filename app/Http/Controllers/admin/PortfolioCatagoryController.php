@@ -28,7 +28,7 @@ class PortfolioCatagoryController extends Controller
      */
     public function PortfolioCategoryTrashPage()
     {
-         $trash_category = Category::latest()->where('trash', true)->get();
+         $trash_category = Category::latest()->where('trash',true)->get();
         return view('admin.page.portfolio_category.trash',[
             'trash_category'  => $trash_category,
         ]);

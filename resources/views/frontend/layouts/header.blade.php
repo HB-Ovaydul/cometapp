@@ -128,7 +128,7 @@
           </li>
 
           <li>
-            <a href="#">Portfolio</a>
+            <a href="{{ route('port.page') }}">Portfolio</a>
           </li>
 
           <li>

@@ -33,7 +33,7 @@
                                     <td>
                                       <ul class="ul-back-end">
                                         
-                                        @forelse (json_decode($portfolio -> categoris) as $pcat)    
+                                        @forelse ($portfolio -> categoris as $pcat)    
                                         <li><i style="margin-right:3px" class="fa fa-angle-right"></i>{{ $pcat -> name }}</li>
                                         @empty
                                             No Categoris
@@ -171,9 +171,9 @@
                     <div class="form-group">
                         <label>Project Categoris</label>
                         <ul class="cats-ul-devs">
-                          @foreach (json_decode($category) as $cates)
+                          @foreach ($category as $cates)
                           <li>
-                            <input name="type[]" type="checkbox" value="{{ $cates -> id }}">
+                            <input name="cat[]" type="checkbox" value="{{ $cates -> id }}">
                             {{ $cates -> name}}
                           </li>
                           @endforeach
@@ -231,23 +231,28 @@
                 <div class="form-group">
                     <label>Featured Image</label>
                     <br>
-                    <input style="display: none;" id="photo-id" name="featured" type="file" class="form-control">
-                    <img style="max-width:100%; max-height:100%;" id="photo-preview" src="{{ url('storage/port_feature/'. $edit -> featured) }}" alt="">
-                    <label for="photo-id">
-                      <img style="width:90px; height:90px;" src="{{ asset('admin/assets/img/slide1.png') }}" alt="">
+                    <img style="max-width:100%; max-height:100%;" id="photo_viwe" src="{{ url('storage/port_feature/'. $edit -> featured) }}" alt="">
+                    <br>
+                    <input id="photo_viwe" style="display: none;" id="photo_id" name="old_featured" type="hidden" class="form-control">
+                    <input style="display: none;"id="photo_id" name="new_featured" type="file" class="form-control">
+                    <label for="photo_id">
+                      <img style="width:90px; height:90px;" src="{{ url('admin/assets/img/slide1.png') }}" alt="">
                     </label>  
                 </div>
                 <hr>
                 <div class="form-group">
                     <label>Gallery</label><br>
-                   <div class="preview-gallery">
+                   {{-- <div class="preview-gallery">
                     
-                   </div>
+                   </div> --}}
                     <br>
-                   <input style="display: none;" id="gallery" multiple name="gallery[]" type="file" class="form-control">
-                    @foreach (json_decode($edit -> gallery) as $gall)
-                    <img src="{{ url('storage/port_gallery/'.$gall -> gallery) }}" alt="">
-                    @endforeach
+                    <div id="pre_gall" class="preview-gallery">
+                      @foreach (json_decode($edit -> gallery) as $gall)
+                        <img src="{{ url('storage/port_gallery/'.$gall) }}" alt="">
+                        @endforeach
+                      </div>
+                   <input id="pre_gall" style="display: none;" id="gallery" multiple name="old_gallery[]" type="file" class="form-control">
+                   <input style="display: none;" id="gallery" multiple name="new_gallery[]" type="file" class="form-control">
                    <label for="gallery"><img style="width:90px; height:90px;" src="{{ asset('admin/assets/img/gallery.png') }}" alt=""></label>
                 </div>  
                 <div class="form-group">
@@ -319,26 +324,32 @@
                 <div class="form-group">
                     <label>Project Categoris</label>
                     <ul class="cats-ul-devs">
-                      @foreach (json_decode($category) as $cates)
-                      <li>
-                        <input name="type[]" type="checkbox" value="{{ $edit -> name }}" value="{{ $cates -> id }}">
-                        {{ $cates -> name}}
-                      </li>
+                      @foreach (json_decode($edit -> categoris) as $item)
+                          @php
+                              $data[] = $item -> id;
+                          @endphp
+                      @endforeach
+                      @foreach ($category as $cat)
+                          <li>
+                            <label><input class="mr-2" @if (in_array($cat->id, $data)) checked @endif name="cat[]" value="{{ $cat->id }}" type="checkbox">{{$cat->name}}</label>
+                          </li>
                       @endforeach
                     </ul>
+                   
                     
+
                 </div>
                 <div class="form-group">
                   <label>Client</label>
                   <input name="client" type="text" value="{{ $edit -> client }}" class="form-control">
               </div>
+              <div class="form-group">
+                <label>Project Type</label>
+                    <input name="types" type="text" value="{{ $edit -> type }}" class="form-control">
+             </div>
                 <div class="form-group">
                     <label>Link</label>
                     <input name="link" type="link" value="{{ $edit -> link }}" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Project Type</label>
-                    <input name="types" value="{{ $edit -> type }}" type="text" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Date</label>

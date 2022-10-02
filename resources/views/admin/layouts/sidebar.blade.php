@@ -34,8 +34,8 @@
 								<a href="#"><i class="fa fa-comment-o"></i> <span>About Page</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="{{ route('about-banner.index') }}">Banner</a></li>
-                                    {{-- <li><a href="#">Category</a></li>
-                                    <li><a href="invoice-report.html">Tags</a></li> --}}
+                                  <li><a href="#">Category</a></li>
+                                    <li><a href="invoice-report.html">Tags</a></li>
 								</ul>
 							</li>
 						@endif
@@ -55,7 +55,8 @@
 								<ul style="display: none;">
 									<li><a href="{{ route('portfolio.index') }}">Portfolio</a></li>
                                     <li><a href="{{ route('portfolio-category.index') }}">Category</a></li>
-                                    {{-- <li><a href="invoice-report.html">Tags</a></li> --}}
+                                    <li><a href="{{ route('portfolio-banner.index') }}">Banner</a></li>
+                                    <li><a href="{{ route('portfolio-work.index') }}">Work Together</a></li>
 								</ul>
 							</li>
 							@endif
@@ -87,7 +88,7 @@
 								</ul>
 							</li>
 							@endif
-							@if (in_array('Theme option',json_decode(Auth::guard('admin')->user()->role->permission)))
+							 @if (in_array('Theme option',json_decode(Auth::guard('admin')->user()->role->permission)))
                             <li> 
 								<a href="index.html"><i class="fa fa-etsy"></i> <span>Theme Option</span></a>
 							</li>
@@ -97,7 +98,7 @@
                             <li> 
 								<a href="index.html"><i class="fa fa-cog"></i> <span>Settings</span></a>
 							</li>
-							@endif
+							@endif 
 
 
 						</ul>

@@ -71,7 +71,7 @@
     <div class="col-xl-3 d-flex">
         <div class="card flex-fill">
             <div class="card-header">
-                <h4 class="card-title">Add Expertise</h4>
+                <h4 class="card-title">Add Portfolio Category</h4>
             </div>
 
             @include('validate')

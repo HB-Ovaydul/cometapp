@@ -4889,3 +4889,13 @@ footer.dark p {
 .menu-hover a:hover{
   color: #EF2D56;
 }
+
+.bhuiyan-huq{
+    width: 100%;
+    height: 600px;
+}
+.bhuiyan-huq .slides .huq{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

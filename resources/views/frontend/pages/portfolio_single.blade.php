@@ -1,38 +1,36 @@
 @extends('frontend.layouts.app')
 @section('content')
 <section class="page-title parallax">
-    <div data-parallax="scroll" data-image-src="frontend/images/bg/12.jpg" class="parallax-bg"></div>
-    <div class="parallax-overlay">
-      <div class="centrize">
-        <div class="v-center">
-          <div class="container">
-            <div class="title center">
-              <h1 class="upper">Single Item<span class="red-dot"></span></h1>
-              <h4>Our best work.</h4>
-              <hr>
-            </div>
+  {{-- @php
+    $banner = App\Models\PortfolioBanner::latest()->where('trash',false)->where('status', true)->gat();
+  @endphp --}}
+  @foreach ($port_page as $item)
+  <div data-parallax="scroll" data-image-src="{{ url('storage/port_feature/'.$item -> featured) }}" class="parallax-bg"></div>
+  <div class="parallax-overlay">
+    <div class="centrize">
+      <div class="v-center">
+        <div class="container">
+          <div class="title center">
+            <h1 class="upper">{{ $item -> title }}<span class="red-dot"></span></h1>
+            <h4>{{ $item -> type }}</h4>
+            <hr>
           </div>
-          <!-- end of container-->
         </div>
+        <!-- end of container-->
       </div>
     </div>
+  </div>
+  @endforeach
   </section>
   <section class="b-0">
     <div class="container">
-      <div data-options="{&quot;animation&quot;: &quot;slide&quot;, &quot;controlNav&quot;: true, &quot;directionNav&quot;: true}" class="flexslider nav-inside">
+      <div data-options="{&quot;animation&quot;: &quot;slide&quot;, &quot;controlNav&quot;: true, &quot;directionNav&quot;: true}" class="flexslider bhuiyan-huq nav-inside">
         <ul class="slides">
-
-          {{-- @foreach (json_decode($portfolios -> gallery) as $gall)
-          <li>
-            <img src="{{ url('storage/port_gallery'.$gall -> gallery ) }}" alt="">
-          </li>    
-          @endforeach --}}
-          {{-- <li>
-            <img src="frontend/images/portfolio/single-2.jpg" alt="">
+          @foreach (json_decode($portfolios -> gallery) as $gall)
+           <li>
+            <img class="huq" src="{{ url('storage/port_gallery/'.$gall) }}" alt="">
           </li>
-          <li>
-            <img src="frontend/images/portfolio/single-3.jpg" alt="">
-          </li> --}}
+          @endforeach 
         </ul>
       </div>
     </div>
@@ -50,7 +48,7 @@
             <div class="number-box"><span>Step No.</span>
               <h2>0{{ $stap_non }}<span class="red-dot"></span></h2>
               <h4>{{ $staps -> title }}</h4>
-              <p>{{ $staps -> dec }}</p>
+              <p>{!! htmlspecialchars_decode($staps -> dec) !!}</p>
             </div>
           </div>
           @php $stap_non++; @endphp    

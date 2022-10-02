@@ -4199,11 +4199,11 @@ element.style {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	gap: 10px;
+	gap: 5px;
 }
 .preview-gallery img{
-	width: 116px;
-	height: 116px;
+	width: 110px;
+	height: 110px;
 	object-fit: cover;
 }
 

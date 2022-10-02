@@ -117,7 +117,10 @@
 								</div>
 								<div class="user-text">
 									<h6>{{ Auth::guard('admin')->user()->name }}</h6>
-									<p class="text-muted mb-0">{{ Auth::guard('admin')->user()->role->name }}</p>
+									<p class="text-muted mb-0">@if(isset(Auth::guard('admin')->user()->role->name ))	
+									@else
+									{{ Auth::guard('admin')->user()->name }}
+									@endif</p>
 								</div>
 							</div>
 							<a class="dropdown-item" href="profile.html">My Profile</a>

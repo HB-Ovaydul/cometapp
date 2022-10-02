@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use function PHPSTORM_META\type;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class PortfolioController extends Controller
@@ -109,12 +110,12 @@ class PortfolioController extends Controller
             'date'      => $request -> date,
             'dec'       => $request -> port_dec,
             'type'       => $request -> types,
-            'featured'  => $file_name,
             'gallery'   => json_encode($gallery),
+            'featured'   => $file_name,
             'staps'     => json_encode($staps),
         ]);
 
-        $portfolio -> categoris() -> attach($request -> type);
+        $portfolio -> categoris() -> attach($request -> cat);
 
         return back()->with('success', 'Portfolio created Successful');
 
@@ -139,7 +140,7 @@ class PortfolioController extends Controller
      */
     public function edit($id)
     {
-        $portfoilis = Portfolio::latest()->where('trash', false)->get();
+        $portfoilis = Portfolio::latest()->where('trash', false)->where('status', true)->get();
         $category = Category::latest()->get();
         $edit = Portfolio::findOrFail($id);
         return view('admin.page.portfolio.index',[
@@ -159,7 +160,73 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    //  Validate
+      $this->validate($request,[
+        'title' => 'required',
+        'client' => 'required',
+        'featured' => 'required',
+    ]);
+
+   $port_update = Portfolio::findOrFail($id);
+
+    // Featured Image Update 
+    if($request->hasFile('new_featured')){
+        $img = $request -> file('new_featured');
+        $file_name = md5(time().rand()).'.'.$img -> clientExtension();
+        $image = Image::make($img -> getRealPath());
+        $image -> save(storage_path('app/public/port_feature/'. $file_name));
+        unlink('storage/port_feature/'.$port_update -> featured);
+
+    }else{
+        $file_name = $port_update -> featured;
+       
+    }
+
+
+    //Gallery Image update
+    $gallery = json_decode($port_update -> gallery);
+    if($request -> hasFile('new_gallery')){
+        $gall = $request -> file('new_gallery');
+        foreach ($gall as $gal) {
+            $gall_name = md5(time().rand()).'.'.$gal -> clientExtension();
+            $gall_image = Image::make($gal -> getRealPath());
+            $gall_image -> save(storage_path('app/public/port_gallery/'. $gall_name));
+             array_push($gallery, $gall_name);
+        }
+    }else{
+        $gallery = json_decode($port_update -> gallery);
+    }
+
+    // Staps Managment
+    $staps = [];
+    if(isset($request -> title)){
+        $staps_arr = $request -> title;
+
+        for($i = 0; $i < count($staps_arr); $i++){
+            array_push($staps,[
+                'title'      => $request -> title[$i],
+                'dec'        => $request -> decp[$i],
+            ]);
+        }
+    }
+
+    // Data Update
+    $port_update -> update([
+        'title'     => $request -> tname,
+        'slug'      => Str::slug($request -> tname),
+        'client'    => $request -> client,
+        'link'      => $request -> link,
+        'date'      => $request -> date,
+        'dec'       => $request -> port_dec,
+        'type'       => $request -> types,
+        'featured'  => $file_name,
+        'gallery'   => json_encode($gallery),
+        'staps'     => json_encode($staps),
+    ]);
+
+    $port_update -> categoris() -> sync($request -> cat);
+
+    return back()->with('success', 'Portfolio Updated Successful');
     }
 
     /**
@@ -207,6 +274,8 @@ class PortfolioController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Portfolio::findOrFail($id);
+        $delete -> delete();
+        return back()->with('success', 'Deleted Successful');
     }
 }

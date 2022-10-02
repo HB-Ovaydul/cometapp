@@ -15,7 +15,9 @@ use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\AboutBannerController;
 use App\Http\Controllers\Frontend\FrontednController;
 use App\Http\Controllers\admin\TestimonialsController;
+use App\Http\Controllers\admin\PortfolioBannerController;
 use App\Http\Controllers\admin\PortfolioCatagoryController;
+use App\Http\Controllers\admin\PortfolioWorkTogetherController;
 
 // Backend Admin Auth Routes
 Route::group(['middleware' => 'admin.redirect'], function(){
@@ -75,6 +77,13 @@ Route::get('/portfolio-trash-page',[PortfolioController::class,'PortfolioTrashPa
 Route::get('/portfolio-trash-update/{id}',[PortfolioController::class,'PortfolioTrashUpdate'])->name('Port.trash.update');
 Route::get('/portfolio-status-update/{id}',[PortfolioController::class,'PortfolioStatusUpdate'])->name('Port.status.update');
 
+// Portfolio Banner Routes
+Route::resource('/portfolio-banner', PortfolioBannerController::class);
+Route::get('/portfolio-banner-status-update/{id}',[PortfolioBannerController::class,'PortfolioBannerStatusUpdate'])->name('portbanner.status.update');
+Route::get('/portfolio-banner-trash-page',[PortfolioBannerController::class,'PortfolioBannerTrashPage'])->name('portbanner.trash.page');
+Route::get('/portfolio-banner-trash-update/{id}',[PortfolioBannerController::class,'PortfolioBannerTrashUpdate'])->name('portbanner.trash.update');
+
+
 // Portfolio Category Routes
 Route::resource('/portfolio-category',PortfolioCatagoryController::class);
 Route::get('/portfolio-category-trash-page',[PortfolioCatagoryController::class,'PortfolioCategoryTrashPage'])->name('Pc.trash.page');
@@ -86,6 +95,12 @@ Route::resource('/vision',VisionContriller::class);
 Route::get('/vision-trash-page',[VisionContriller::class,'VisionTrashPage'])->name('vision.trash.page');
 Route::get('/vision-trash-update/{id}',[VisionContriller::class,'VisionTrashupdate'])->name('vision.trash.update');
 Route::get('/vision-status-update/{id}',[VisionContriller::class,'VisionStatusupdate'])->name('vision.status.update');
+
+// Portfolio Work Together Routes
+Route::resource('/portfolio-work',PortfolioWorkTogetherController::class);
+Route::get('/portfolio-work-trash-page',[PortfolioWorkTogetherController::class,'PortWorkTrashPage'])->name('work.trash.page');
+Route::get('/portfolio-work-trash-update/{id}',[PortfolioWorkTogetherController::class,'WorkTrashupdate'])->name('work.trash.update');
+Route::get('portfolio-work-status-update/{id}',[PortfolioWorkTogetherController::class,'WorkStatusupdate'])->name('work.status.update');
 
 // About Admin Routes
 Route::resource('/about-banner',AboutBannerController::class);
@@ -103,4 +118,5 @@ Route::get('/banner-trash-update/{id}',[AboutBannerController::class, 'BannerTra
  Route::get('/contact', [FrontednController::class, 'ShowCntactPage'])->name('contact.page');
  Route::get('/about', [FrontednController::class, 'ShowAboutPage'])->name('about.page');
  Route::get('/portfolio-single-page/{slug}', [FrontednController::class, 'ShowSinglePortfolioPage'])->name('port.single.page');
+ Route::get('/portfolio-page', [FrontednController::class, 'ShowPortfolioPage'])->name('port.page');
 

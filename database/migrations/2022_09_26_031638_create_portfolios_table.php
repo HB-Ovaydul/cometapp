@@ -23,11 +23,13 @@ return new class extends Migration
             $table->text('staps')->nullable();
             $table->string('link')->nullable();
             $table->string('date')->nullable();
+            $table->string('project_cat')->nullable();
             $table->string('type')->nullable();
             $table->text('dec')->nullable();
             $table->boolean('status')->default(true);
             $table->boolean('trash')->default(false);
             $table->timestamps();
+
         });
     }
 

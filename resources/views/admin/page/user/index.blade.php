@@ -25,7 +25,7 @@
                         </thead>
                         <tbody>
                             @forelse ($all_admin as $admin)
-                            @if($admin -> name != 'provider' )
+                            @if($admin -> name != 'provider')
                             <tr>
                                 <td>{{ $loop -> index + 1}}</td>
                                 <td>{{ $admin -> name }}</td>
