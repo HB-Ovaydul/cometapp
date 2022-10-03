@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\RoleConroller;
+use App\Http\Controllers\admin\TagController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\SliderController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\AboutBannerController;
 use App\Http\Controllers\Frontend\FrontednController;
+use App\Http\Controllers\admin\CategorypostController;
 use App\Http\Controllers\admin\TestimonialsController;
 use App\Http\Controllers\admin\PortfolioBannerController;
 use App\Http\Controllers\admin\PortfolioCatagoryController;
@@ -107,6 +109,21 @@ Route::resource('/about-banner',AboutBannerController::class);
 Route::get('/banner-status/{id}',[AboutBannerController::class, 'BannerStatus' ])->name('banner.status.update');
 Route::get('/banner-trash-page',[AboutBannerController::class, 'BannerTrashPage' ])->name('banner.trash');
 Route::get('/banner-trash-update/{id}',[AboutBannerController::class, 'BannerTrashUpdate' ])->name('banner.trash.update');
+
+/**
+ *  Blog post, Tag, Category Routs
+ */ 
+// Categorypost Routes
+Route::resource('/categorypost',CategorypostController::class);
+Route::get('/categorypost-trash-page',[CategorypostController::class,'CategorypostTrashPage'])->name('categorypost.trash.page');
+Route::get('/categorypost-trash-update/{id}',[CategorypostController::class,'categorypostupdate'])->name('categorypost.trash.update');
+Route::get('categorypost-status-update/{id}',[CategorypostController::class,'categorypostStatusupdate'])->name('categorypost.status.update');
+
+// Post Tag Routes
+Route::resource('/tag',TagController::class);
+Route::get('/tag-trash-page',[TagController::class,'TagTrashPage'])->name('tag.trash.page');
+Route::get('/tag-trash-update/{id}',[TagController::class,'tagupdate'])->name('tag.trash.update');
+Route::get('tag-status-update/{id}',[TagController::class,'TagStatusupdate'])->name('Tag.status.update');
 
 });
 

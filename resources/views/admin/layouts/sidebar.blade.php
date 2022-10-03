@@ -71,8 +71,8 @@
 								<a href="#"><i class="fa fa-comment-o"></i> <span> Post</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="invoice-report.html">All Post</a></li>
-                                    <li><a href="#">Category</a></li>
-                                    <li><a href="invoice-report.html">Tags</a></li>
+                                    <li><a href="{{ route('categorypost.index') }}">Category</a></li>
+                                    <li><a href="{{ route('tag.index') }}">Tags</a></li>
 								</ul>
 							</li>
 						@endif
