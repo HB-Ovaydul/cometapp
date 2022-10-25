@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\RoleConroller;
 use App\Http\Controllers\admin\TagController;
+use App\Http\Controllers\admin\PostController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\BrandController;
 use App\Http\Controllers\admin\ClientController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\admin\VisionContriller;
+use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\AdminAuthController;
 use App\Http\Controllers\admin\AdminpageController;
 use App\Http\Controllers\admin\ContactUsController;
@@ -14,10 +17,12 @@ use App\Http\Controllers\admin\ExpertiseController;
 use App\Http\Controllers\admin\PortfolioController;
 use App\Http\Controllers\admin\PermissionController;
 use App\Http\Controllers\admin\AboutBannerController;
+use App\Http\Controllers\admin\ProductTageController;
 use App\Http\Controllers\Frontend\FrontednController;
 use App\Http\Controllers\admin\CategorypostController;
 use App\Http\Controllers\admin\TestimonialsController;
 use App\Http\Controllers\admin\PortfolioBannerController;
+use App\Http\Controllers\admin\ProductCategoryController;
 use App\Http\Controllers\admin\PortfolioCatagoryController;
 use App\Http\Controllers\admin\PortfolioWorkTogetherController;
 
@@ -125,6 +130,37 @@ Route::get('/tag-trash-page',[TagController::class,'TagTrashPage'])->name('tag.t
 Route::get('/tag-trash-update/{id}',[TagController::class,'tagupdate'])->name('tag.trash.update');
 Route::get('tag-status-update/{id}',[TagController::class,'TagStatusupdate'])->name('Tag.status.update');
 
+// Posts Routes
+Route::resource('/post-admin',PostController::class);
+Route::get('/psot-trash-page',[PostController::class,'PostTrashPage'])->name('post.trash.page');
+Route::get('/post-trash-update/{id}',[PostController::class,'postupdate'])->name('post.trash.update');
+Route::get('post-status-update/{id}',[PostController::class,'PostStatusupdate'])->name('post.status.update');
+
+// Product Category Routes
+Route::resource('/product-category',ProductCategoryController::class);
+Route::get('/produc-trash-page',[ProductCategoryController::class,'ProductTrashPage'])->name('product.trash.page');
+Route::get('/product-trash-update/{id}',[ProductCategoryController::class,'productupdate'])->name('product.trash.update');
+Route::get('product-status-update/{id}',[ProductCategoryController::class,'productStatusupdate'])->name('product.status.update');
+
+// Product Tag Routes
+Route::resource('/tag-product',ProductTageController::class);
+Route::get('/product-tag-trash-page',[ProductTageController::class,'ProductTagTrashPage'])->name('product.tag.trash.page');
+Route::get('/product-tag-trash-update/{id}',[ProductTageController::class,'ProductTagupdate'])->name('product.tag.trash.update');
+Route::get('product-tag-status-update/{id}',[ProductTageController::class,'ProductTagStatusUpdate'])->name('product.tag.status.update');
+
+// Product Brand Routes
+Route::resource('/brand-product',BrandController::class);
+Route::get('/product-brand-trash-page',[BrandController::class,'ProductBrandPage'])->name('product.brand.trash.page');
+Route::get('/product-brand-trash-update/{id}',[BrandController::class,'ProductBrandUpdate'])->name('product.brand.trash.update');
+Route::get('product-brand-status-update/{id}',[BrandController::class,'productTagStatusUpdate'])->name('product.brand.status.update');
+
+// Product's Routes
+Route::resource('/products',ProductController::class);
+// Route::get('/product-brand-trash-page',[ProductController::class,'ProductBrandPage'])->name('product.brand.trash.page');
+// Route::get('/product-brand-trash-update/{id}',[ProductController::class,'ProductBrandUpdate'])->name('product.brand.trash.update');
+// Route::get('product-brand-status-update/{id}',[ProductController::class,'productTagStatusUpdate'])->name('product.brand.status.update');
+
+
 });
 
 /**
@@ -136,4 +172,20 @@ Route::get('tag-status-update/{id}',[TagController::class,'TagStatusupdate'])->n
  Route::get('/about', [FrontednController::class, 'ShowAboutPage'])->name('about.page');
  Route::get('/portfolio-single-page/{slug}', [FrontednController::class, 'ShowSinglePortfolioPage'])->name('port.single.page');
  Route::get('/portfolio-page', [FrontednController::class, 'ShowPortfolioPage'])->name('port.page');
+ Route::get('/blog-page', [FrontednController::class, 'ShowblogPage'])->name('blog.page');
+ Route::get('/category/{slug}', [FrontednController::class, 'ShowCategoryBySlugPage'])->name('search.category.post');
+ Route::get('/tag-post/{slug}', [FrontednController::class, 'searchByTagPost'])->name('search.tag.post');
+ Route::get('/post-search/{key}', [FrontednController::class, 'Postsearch'])->name('post.search');
+ Route::get('/single-blog-page/{slug}', [FrontednController::class, 'ShowSingleblog'])->name('blog.single.page');
+// Commets Routes
+Route::post('/comment', [FrontednController::class, 'Comment'])->name('user.comment');
+// Product Page Routes
+Route::get('/product-page',[FrontednController::class,'ShowProductPage'])->name('product.page');
+Route::get('/product-search-by-category/{slug}',[FrontednController::class,'ProductSearchByCategory'])->name('product.search.cate');
+Route::get('/product-search-by-tag/{slug}',[FrontednController::class,'ProductSearchBytag'])->name('product.search.tag');
+Route::get('/product-search-by-brand/{slug}',[FrontednController::class,'ProductSearchByBrand'])->name('product.search.brand');
+// Single Product Page Routes
+Route::get('/single-product/{slug}',[FrontednController::class,'SingleProduct'])->name('single.product');
+
+
 

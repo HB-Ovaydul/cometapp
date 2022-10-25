@@ -26,6 +26,8 @@
 
 		{{-- icons --}}
 		<link rel="stylesheet" href="{{ asset('admin/assets/icon/themify-icons.css') }}">
+		{{-- select2 --}}
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 		{{-- Et-line-icon --}}
 		<link rel="stylesheet" href="{{ asset('admin/assets/icon/et-line-icon/style.css') }}">
 
@@ -87,6 +89,9 @@
 		<script src="{{ asset('admin/assets/js/chart.morris.js') }}"></script>
 		<!-- DataTable plugin -->
 		<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.js"></script>
+
+		{{-- select2 --}}
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 		
 		<!-- Custom JS -->
 		<script  src="{{ asset('admin/assets/ckeditor/ckeditor.js') }}"></script>

@@ -9,4 +9,10 @@ class Categorypost extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    // Post Tag Relationship 
+    public function catposts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
 }

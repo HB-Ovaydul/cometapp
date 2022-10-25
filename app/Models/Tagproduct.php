@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Tagproduct extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    // Post Tag Relationship 
-    public function posts()
+    /**
+     *  Product tage
+     */
+    public function tagproduct()
     {
-        return $this->belongsToMany(Post::class);
+        return $this->belongsToMany(Product::class);
     }
 }

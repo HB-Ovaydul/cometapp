@@ -60,6 +60,17 @@
 								</ul>
 							</li>
 							@endif
+							@if (in_array('Product', json_decode(Auth::guard('admin')->user()->role->permission)))
+                            <li class="submenu">
+								<a href="#"><i class="fa fa-briefcase"></i> <span> Product</span> <span class="menu-arrow"></span></a>
+								<ul style="display: none;">
+									<li><a href="{{ route('products.index') }}">All Product</a></li>
+                                    <li><a href="{{ route('product-category.index') }}">Category</a></li>
+                                    <li><a href="{{ route('tag-product.index') }}">Tag</a></li>
+                                    <li><a href="{{ route('brand-product.index') }}">Brand</a></li>
+								</ul>
+							</li>
+							@endif
 							@if(in_array('Our Team', json_decode(Auth::guard('admin')->user()->role->permission)))
                             <li> 
 								<a href="index.html"><i class="fe fe-users"></i> <span>Our Team</span></a>
@@ -70,7 +81,7 @@
                             <li class="submenu">
 								<a href="#"><i class="fa fa-comment-o"></i> <span> Post</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="invoice-report.html">All Post</a></li>
+									<li><a href="{{ route('post-admin.index') }}">All Post</a></li>
                                     <li><a href="{{ route('categorypost.index') }}">Category</a></li>
                                     <li><a href="{{ route('tag.index') }}">Tags</a></li>
 								</ul>

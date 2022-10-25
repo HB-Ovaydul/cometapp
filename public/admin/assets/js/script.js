@@ -332,4 +332,45 @@ $('#gallery').change(function(e){
 	$('.preview-gallery').html(galler_file);
 });
 
+// Select 2 for Tag
+$('.comet-select').select2();
+
+// Blog featuer
+$('#comet-blog').change(function(){
+	const type = $(this).val();
+	if(type == 'Standard'){
+		$('.post-standard').show();
+		$('.post-gallery').hide();
+		$('.post-video').hide();
+		$('.post-audio').hide();
+		$('.post-qoute').hide();
+	}else if(type == 'Gallery'){
+		$('.post-standard').hide();
+		$('.post-gallery').show();
+		$('.post-video').hide();
+		$('.post-audio').hide();
+		$('.post-qoute').hide();
+	}else if(type == 'Video'){
+		$('.post-standard').hide();
+		$('.post-gallery').hide();
+		$('.post-video').show();
+		$('.post-audio').hide();
+		$('.post-qoute').hide();
+	}else if(type == 'Audio'){
+		$('.post-standard').hide();
+		$('.post-gallery').hide();
+		$('.post-video').hide();
+		$('.post-audio').show();
+		$('.post-qoute').hide();
+	}else if(type == 'Qoute'){
+		$('.post-standard').hide();
+		$('.post-gallery').hide();
+		$('.post-video').hide();
+		$('.post-audio').hide();
+		$('.post-qoute').show();
+	}
+});
+
+
+
 })(jQuery);

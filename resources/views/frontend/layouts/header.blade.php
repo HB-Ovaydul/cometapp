@@ -136,7 +136,10 @@
           </li>
 
           <li>
-            <a href="#">Blog</a>
+            <a href="{{ route('blog.page') }}">Blog</a>
+          </li>
+          <li>
+            <a href="{{ route('product.page') }}">Shop</a>
           </li>
 
           <li>

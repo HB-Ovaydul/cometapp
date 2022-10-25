@@ -4227,4 +4227,11 @@ element.style {
 .ul-back-end li {
 	list-style: none;
 }
+.post-feature,
+.post-gallery,
+.post-video,
+.post-audio,
+.post-qoute{
+	display: none;
+}
 
